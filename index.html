@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CUT.CLIPER · Klip yang bikin penasaran</title>
+<meta name="description" content="CUT.CLIPER: klip podcast dan kisah sukses tokoh dunia, dipotong pendek dengan subtitle animasi. Tonton di TikTok dan Instagram.">
+<meta name="theme-color" content="#111014">
+<meta property="og:title" content="CUT.CLIPER">
+<meta property="og:description" content="Klip podcast dan kisah sukses tokoh dunia, dipotong pendek dengan subtitle animasi.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://j73732919-sketch.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111014'/%3E%3Cpath d='M42 22a14 14 0 1 0 0 20' fill='none' stroke='%23ff5a5f' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<script>
+  // sembunyikan judul sebentar sampai animasinya siap (maksimal 2,5 detik)
+  document.documentElement.classList.add('js');
+  setTimeout(function(){ document.documentElement.classList.add('ready'); }, 2500);
+</script>
+<style>
+:root{--bg:#111014;--ink:#f3efe9;--soft:#b8b2aa;--acc:#ff5a5f;--card:#1a181f;--line:#2a2730}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Inter Tight",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.band{padding:clamp(56px,9vw,120px) max(5vw,18px)}
+.eyebrow{display:inline-block;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+
+/* ---------- HERO ---------- */
+.hero{min-height:100svh;display:grid;align-content:center;padding:0 max(6vw,18px);position:relative}
+.hero h1{font-weight:800;font-size:clamp(42px,9vw,120px);line-height:1;letter-spacing:-.03em;margin:0;max-width:14ch;text-wrap:balance}
+.js:not(.ready) .hero .split{opacity:0}
+.hero .lead{font-size:clamp(17px,2.2vw,21px);color:var(--soft);max-width:44ch;margin:22px 0 30px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-flex;align-items:center;gap:10px;min-height:50px;padding:0 22px;border-radius:999px;font-weight:600;font-size:16px;text-decoration:none;border:1px solid var(--line);background:var(--card);transition:border-color .2s,transform .2s}
+.btn.main{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn:hover{transform:translateY(-2px);border-color:var(--acc)}
+.btn:focus-visible,.link:focus-visible,.sc:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.scroll-hint{position:absolute;left:max(6vw,18px);bottom:clamp(20px,5vh,44px);font-size:14px;color:var(--soft);animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(6px)}}
+
+/* ---------- KISAH KATA DEMI KATA (GSAP) ---------- */
+.intro{padding-bottom:0}
+.intro h2,.stories h2,.follow h2{font-size:clamp(28px,4.5vw,44px);line-height:1.08;letter-spacing:-.02em;margin:0;max-width:20ch}
+.card{height:100svh;display:grid;align-content:center;padding:0 max(6vw,18px);position:relative}
+.kicker{font-style:italic;font-size:clamp(16px,2.2vw,22px);color:var(--soft);margin:0 0 .6em}
+.title{font-weight:800;font-size:clamp(40px,8.4vw,112px);line-height:1.02;letter-spacing:-.02em;margin:0;max-width:16ch;text-wrap:balance}
+.w{display:inline-block;margin-right:.24em;will-change:transform,opacity,filter}
+.w.acc{color:var(--acc)}
+.bar{position:absolute;left:max(6vw,18px);right:max(6vw,18px);bottom:clamp(24px,6vh,56px);height:3px;background:var(--line);border-radius:3px;overflow:hidden}
+.bar i{display:block;height:100%;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(0)}
+.note{font-size:13px;color:#8a847c;margin:14px 0 0;max-width:60ch}
+
+/* ---------- KARTU KISAH SUKSES (Motion) ---------- */
+.stories>p{margin:12px 0 28px;max-width:56ch;color:var(--soft)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:16px;max-width:1100px}
+.sc{position:relative;background:var(--card);border:1px solid var(--line);box-shadow:0 0 0 rgba(0,0,0,0);border-radius:18px;padding:22px 20px 20px;cursor:pointer;overflow:hidden;-webkit-tap-highlight-color:transparent}
+.m-ready .sc{opacity:0}
+.sc .yr{display:inline-block;font-size:13px;font-weight:600;padding:4px 10px;border-radius:99px;background:rgba(255,90,95,.14);color:var(--acc)}
+.sc h3{font-size:22px;line-height:1.15;margin:14px 0 4px}
+.sc .from{font-style:italic;margin:0;color:var(--soft)}
+.sc .to{font-weight:800;font-size:20px;margin:2px 0 12px;display:flex;gap:8px;align-items:center}
+.sc .ar{display:inline-block;color:var(--acc)}
+.sc .body{font-size:15px;margin:0;color:#d6d0c8}
+.sc .glow{position:absolute;left:0;top:0;height:3px;width:100%;background:var(--acc);transform-origin:left;transform:scaleX(.18)}
+
+/* ---------- IKUTI ---------- */
+.follow>p{margin:12px 0 28px;max-width:52ch;color:var(--soft)}
+.links{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;max-width:900px}
+.link{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:24px;border-radius:18px;background:var(--card);border:1px solid var(--line);text-decoration:none;transition:border-color .2s}
+.link:hover{border-color:var(--acc)}
+.link small{display:block;font-size:14px;color:var(--soft);margin-bottom:4px}
+.link strong{display:block;font-size:clamp(20px,3vw,26px);overflow-wrap:anywhere}
+.link .ar{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font-size:22px}
+
+footer{padding:32px max(5vw,18px) 48px;border-top:1px solid var(--line);font-size:14px;color:#8a847c;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll-hint{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="eyebrow">CUT.CLIPER</p>
+  <h1 class="split" data-acc="bikin penasaran.">Cerita besar, dipotong jadi klip yang bikin penasaran.</h1>
+  <p class="lead">Klip podcast dan kisah sukses tokoh dunia, dipotong pendek dengan subtitle animasi. Tonton di TikTok dan Instagram.</p>
+  <div class="btns">
+    <a class="btn main" href="https://www.tiktok.com/@davidvid825" target="_blank" rel="noopener">Tonton di TikTok ↗</a>
+    <a class="btn" href="https://www.instagram.com/jayan_0273/" target="_blank" rel="noopener">Ikuti di Instagram ↗</a>
+  </div>
+  <div class="scroll-hint" aria-hidden="true">Gulir ke bawah ↓</div>
+</header>
+
+<main>
+  <section class="intro band">
+    <p class="eyebrow">Satu kisah</p>
+    <h2>Gulir pelan-pelan, ceritanya muncul kata demi kata.</h2>
+  </section>
+
+  <section class="card">
+    <p class="kicker">jensen huang, waktu umur 15</p>
+    <h2 class="title split" data-acc="cuci piring.">Dulu dia cuma tukang cuci piring.</h2>
+    <div class="bar"><i></i></div>
+  </section>
+
+  <section class="card">
+    <p class="kicker">tahun 1993, di sebuah restoran</p>
+    <h2 class="title split" data-acc="Nvidia.">Satu obrolan di meja makan melahirkan Nvidia.</h2>
+    <div class="bar"><i></i></div>
+  </section>
+
+  <section class="card">
+    <p class="kicker">pelajarannya</p>
+    <h2 class="title split" data-acc="langkah kecilmu.">Jangan remehkan langkah kecilmu.</h2>
+    <div class="bar"><i></i></div>
+    <p class="note">Kisah Jensen Huang, pendiri Nvidia, yang dulu bekerja di restoran Denny's.</p>
+  </section>
+
+  <section class="stories band">
+    <p class="eyebrow">Kisah sukses</p>
+    <h2>Dari nol ke besar</h2>
+    <p>Orang-orang yang mulainya dari bawah. Ketuk kartunya.</p>
+    <div class="grid" id="grid">
+      <article class="sc" tabindex="0"><span class="glow"></span><span class="yr">1993</span>
+        <h3>Jensen Huang</h3><p class="from">tukang cuci piring</p><p class="to"><span class="ar">→</span>pendiri Nvidia</p>
+        <p class="body">Kerja pertamanya mencuci piring di restoran Denny's. Ide Nvidia lahir di meja restoran yang sama.</p></article>
+      <article class="sc" tabindex="0"><span class="glow"></span><span class="yr">2014</span>
+        <h3>Brian Acton</h3><p class="from">ditolak kerja di Facebook</p><p class="to"><span class="ar">→</span>WhatsApp dibeli Facebook</p>
+        <p class="body">Tahun 2009 ditolak Twitter dan Facebook. Lima tahun kemudian WhatsApp dibeli Facebook senilai 19 miliar dolar.</p></article>
+      <article class="sc" tabindex="0"><span class="glow"></span><span class="yr">2012</span>
+        <h3>Ben Francis</h3><p class="from">kurir pizza</p><p class="to"><span class="ar">→</span>pendiri Gymshark</p>
+        <p class="body">Umur 19 tahun, gaji dari Pizza Hut dipakai beli mesin jahit. Baju gym pertamanya dijahit di garasi orang tua.</p></article>
+      <article class="sc" tabindex="0"><span class="glow"></span><span class="yr">2013</span>
+        <h3>Melanie Perkins</h3><p class="from">ditolak 100+ investor</p><p class="to"><span class="ar">→</span>pendiri Canva</p>
+        <p class="body">Butuh bertahun-tahun sampai dapat investasi pertama. Presentasinya diperbaiki setiap kali ditolak.</p></article>
+    </div>
+    <p class="note">Fakta di kartu diambil dari pemberitaan Fortune, TechCrunch, CNBC dan media lain soal tiap tokoh.</p>
+  </section>
+
+  <section class="follow band" id="ikuti">
+    <p class="eyebrow">Ikuti</p>
+    <h2>Klip barunya keluar di sini</h2>
+    <p>Kalau suka kisah kayak gini, follow biar nggak ketinggalan klip berikutnya.</p>
+    <div class="links">
+      <a class="link" href="https://www.tiktok.com/@davidvid825" target="_blank" rel="noopener">
+        <span><small>TikTok</small><strong>@davidvid825</strong></span><span class="ar" aria-hidden="true">↗</span>
+      </a>
+      <a class="link" href="https://www.instagram.com/jayan_0273/" target="_blank" rel="noopener">
+        <span><small>Instagram</small><strong>@jayan_0273</strong></span><span class="ar" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <span>© 2026 CUT.CLIPER</span>
+  <span>Animasi: GSAP + ScrollTrigger dan Motion</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@12.23.12/dist/motion.js"></script>
+<script>
+{
+  const root = document.documentElement;
+
+  // pecah judul jadi <span> per kata; kata di data-acc diberi warna aksen
+  function splitWords(el){
+    const acc = (el.dataset.acc || '').split(/\s+/).filter(Boolean);
+    const words = el.textContent.trim().split(/\s+/);
+    el.textContent = '';
+    words.forEach(w => {
+      const s = document.createElement('span');
+      s.className = 'w' + (acc.includes(w) ? ' acc' : '');
+      s.textContent = w;
+      el.appendChild(s);
+    });
+    return el.querySelectorAll('.w');
+  }
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const heroWords = splitWords(document.querySelector('.hero .split'));
+  const cards = document.querySelectorAll('.card');
+
+  if (window.gsap && window.ScrollTrigger && !reduce) {
+    gsap.registerPlugin(ScrollTrigger);
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
+    // judul utama: kata muncul berurutan saat halaman dibuka
+    gsap.from(heroWords, { opacity: 0, yPercent: 70, filter: 'blur(8px)', duration: 0.8, ease: 'power3.out', stagger: 0.07, delay: 0.1 });
+    gsap.from('.hero .lead, .hero .btns', { opacity: 0, y: 20, duration: 0.7, ease: 'power2.out', stagger: 0.12, delay: 0.1 + heroWords.length * 0.07 });
+    root.classList.add('ready');
+
+    // tiap kartu cerita: dikunci di layar, kata menyala mengikuti scroll
+    cards.forEach(card => {
+      const words = splitWords(card.querySelector('.split'));
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: 'top top',
+          end: '+=' + (words.length * 22 + 60) + '%',
+          scrub: 0.6,
+          pin: true
+        }
+      });
+      tl.from(words, { opacity: 0.08, yPercent: 60, filter: 'blur(10px)', ease: 'power2.out', stagger: 0.35, duration: 1 })
+        .to(card.querySelector('.bar i'), { scaleX: 1, ease: 'none', duration: tl.duration() }, 0)
+        .to({}, { duration: 0.8 });
+    });
+  } else {
+    cards.forEach(card => splitWords(card.querySelector('.split')));
+    root.classList.add('ready');
+  }
+
+  // kartu kisah sukses + kartu link: Motion
+  if (window.Motion && !reduce) {
+    const { animate, inView, hover, press, stagger } = Motion;
+    root.classList.add('m-ready');
+
+    inView('#grid', () => {
+      animate(document.querySelectorAll('.sc'),
+        { opacity: [0, 1], y: [40, 0], scale: [0.96, 1] },
+        { delay: stagger(0.1), type: 'spring', stiffness: 170, damping: 20 });
+    }, { amount: 0.25 });
+
+    inView('.links', () => {
+      animate(document.querySelectorAll('.link'),
+        { opacity: [0, 1], y: [30, 0] },
+        { delay: stagger(0.12), type: 'spring', stiffness: 170, damping: 20 });
+    }, { amount: 0.3 });
+
+    hover('.sc', el => {
+      const base = getComputedStyle(el).borderColor;
+      animate(el, { y: -8, scale: 1.02, boxShadow: '0 18px 40px rgba(0,0,0,.35)', borderColor: '#ff5a5f' }, { type: 'spring', stiffness: 300, damping: 22 });
+      animate(el.querySelector('.glow'), { scaleX: 1 }, { duration: 0.35, ease: 'easeOut' });
+      animate(el.querySelector('.ar'), { x: 6 }, { type: 'spring', stiffness: 400, damping: 18 });
+      return () => {
+        animate(el, { y: 0, scale: 1, boxShadow: '0 0 0 rgba(0,0,0,0)', borderColor: base }, { type: 'spring', stiffness: 300, damping: 24 });
+        animate(el.querySelector('.glow'), { scaleX: 0.18 }, { duration: 0.3 });
+        animate(el.querySelector('.ar'), { x: 0 }, { duration: 0.2 });
+      };
+    });
+
+    press('.sc', el => {
+      animate(el, { scale: 0.97 }, { duration: 0.12 });
+      animate(el.querySelector('.glow'), { scaleX: 1 }, { duration: 0.25 });
+      return () => {
+        animate(el, { scale: 1 }, { type: 'spring', stiffness: 500, damping: 15 });
+        animate(el.querySelector('.glow'), { scaleX: 0.18 }, { duration: 0.4, delay: 0.3 });
+      };
+    });
+
+    press('.link', el => {
+      animate(el, { scale: 0.97 }, { duration: 0.12 });
+      return () => animate(el, { scale: 1 }, { type: 'spring', stiffness: 500, damping: 15 });
+    });
+  }
+}
+</script>
+</body>
+</html>
