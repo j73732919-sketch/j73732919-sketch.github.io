@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lenis@1.3.29/dist/lenis.css">
 <script>
   // sembunyikan judul sebentar sampai animasinya siap (maksimal 2,5 detik)
   document.documentElement.classList.add('js');
@@ -22,7 +23,6 @@
 <style>
 :root{--bg:#111014;--ink:#f3efe9;--soft:#b8b2aa;--acc:#ff5a5f;--card:#1a181f;--line:#2a2730}
 *{box-sizing:border-box;min-width:0}
-html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Inter Tight",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;overflow-x:clip;-webkit-font-smoothing:antialiased}
 a{color:inherit}
 .band{padding:clamp(56px,9vw,120px) max(5vw,18px)}
@@ -76,7 +76,7 @@ a{color:inherit}
 .link .ar{flex:none;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--acc);color:#fff;font-size:22px}
 
 footer{padding:32px max(5vw,18px) 48px;border-top:1px solid var(--line);font-size:14px;color:#8a847c;display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.scroll-hint{animation:none}}
+@media (prefers-reduced-motion:reduce){.scroll-hint{animation:none}}
 </style>
 </head>
 <body>
@@ -155,12 +155,13 @@ footer{padding:32px max(5vw,18px) 48px;border-top:1px solid var(--line);font-siz
 
 <footer>
   <span>© 2026 CUT.CLIPER</span>
-  <span>Animasi: GSAP + ScrollTrigger dan Motion</span>
+  <span>Animasi: GSAP + ScrollTrigger, Motion, dan Lenis</span>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/motion@12.23.12/dist/motion.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.29/dist/lenis.min.js"></script>
 <script>
 {
   const root = document.documentElement;
@@ -186,6 +187,15 @@ footer{padding:32px max(5vw,18px) 48px;border-top:1px solid var(--line);font-siz
   if (window.gsap && window.ScrollTrigger && !reduce) {
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.config({ ignoreMobileResize: true });
+
+    // smooth scroll: Lenis digerakkan oleh ticker GSAP
+    if (window.Lenis) {
+      const lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1, anchors: true });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(time => lenis.raf(time * 1000));
+      gsap.ticker.lagSmoothing(0);
+      window.lenis = lenis;
+    }
 
     // judul utama: kata muncul berurutan saat halaman dibuka
     gsap.from(heroWords, { opacity: 0, yPercent: 70, filter: 'blur(8px)', duration: 0.8, ease: 'power3.out', stagger: 0.07, delay: 0.1 });
